@@ -30,7 +30,13 @@
                 </td> 
             </tr> 
         </table>
-        <h2>Bienvenido a DEVELOP Store ${cliente.nombre}</h2>
+        <h2>Bienvenido a DEVELOP Store ${sessionScope.cliente.nombre}</h2>
+        <h2>Bienvenido a DEVELOP Store <%= request.getSession()
+                                            .getAttribute("cliente") %></h2>
+        
+        Con request: <%= request.getHeader("Accept") %> <br>
+        Con EL uso invalido: ${requestScope.header["Accept"]}<br>
+        Con EL uso valido: ${header["Accept"]}<br>
         <h3>Clientes</h3>
         <ul>
             <li><a href="lista_productos.view">Ver listado de Productos.</a>
