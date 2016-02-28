@@ -34,6 +34,9 @@
                             <td>${user.nombre}</td>
                             <%--<td><%= request.getAttribute("userName") %></td>--%>
                         </tr>
+                        <tr>
+                            <a href="logout.do">Cerrar sesion</a>
+                        </tr>
                     </table>
                 </td> 
             </tr> 
@@ -66,9 +69,10 @@
                     <td><%= prodActual.getTalla().getTitulo()%></td>
                     <td>$<%= prodActual.getPrecio()%></td>
                     <td><%= prodActual.getDisponibles()%></td>
-                    <td><a href="./ventas/detalles_producto.view?id=<%= prodActual.getId() %>">
+                    <td><a href="<%=response.encodeRedirectURL("./ventas/detalles_producto.view?id="+prodActual.getId()) %> " >
                             <img src="./imagenes/carrito.png" width="40" height="40"
-                             alt="carrito" /></a>
+                             alt="carrito" />
+                        </a>
                     </td>
                 </tr>
                 <%

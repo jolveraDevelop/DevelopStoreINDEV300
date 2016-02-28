@@ -31,8 +31,10 @@ public class Login extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("cliente", new Cliente("Roberto Olvera","roberto","clave123"));
                     //request.setAttribute("userName", usuario);
-                    request.getRequestDispatcher("index.jsp").
-                            forward(request, response);
+                              
+                    String encodeUrl = 
+                            response.encodeRedirectURL("lista_productos.view");
+                    response.sendRedirect(encodeUrl);
                 }
             }
         }
