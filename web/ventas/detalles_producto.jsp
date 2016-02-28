@@ -33,6 +33,8 @@
             </tr> 
         </table>
         <b>Usted está aquí:</b> <a href="../index.html">Inicio</a>/<a href="../lista_productos.view">Listado de Productos</a>/Detalles del Producto</a><br/>
+    <b>ID:</b> ${param.id}</br>
+    <b>ID:</b> ${param["id"]}</br>
     <b>Color:</b> ${producto.color.titulo}</br>
     <b>Precio:</b> ${producto.precio}</br>
     <b>Talla:</b> ${ producto.talla}</br>
