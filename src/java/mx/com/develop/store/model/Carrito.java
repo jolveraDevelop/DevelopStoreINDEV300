@@ -26,4 +26,11 @@ public class Carrito {
     public void setProductos(Map<Producto, Integer> productos) {
         this.productos = productos;
     }
+    
+    public void addProducto(Producto producto, Integer cantidad){
+        // validar si el producto ya existe en el carrito
+        // then cantidad + lo que tiene el carrito
+        // else cantidad
+        this.productos.put(producto, cantidad);
+    }
 }

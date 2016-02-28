@@ -30,10 +30,10 @@
                 </td> 
             </tr> 
         </table>
-        <h2>Bienvenido a DEVELOP Store ${userName}</h2>
+        <h2>Bienvenido a DEVELOP Store ${cliente.nombre}</h2>
         <h3>Clientes</h3>
         <ul>
-            <li><a href="lista_productos.html">Ver listado de Productos.</a>
+            <li><a href="lista_productos.view">Ver listado de Productos.</a>
             </li>
         </ul>
     </body>

@@ -1,13 +1,13 @@
 package mx.com.develop.store.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Enumeration;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import mx.com.develop.store.model.Cliente;
 public class Login extends HttpServlet {
 
     @Override
@@ -22,12 +22,15 @@ public class Login extends HttpServlet {
         String contrasenia = request.getParameter("contrasenia");
         Enumeration<String> usuariosValidos 
                 = this.getServletConfig().getInitParameterNames();
+       
         while (usuariosValidos.hasMoreElements()) {
             String nextElement = usuariosValidos.nextElement();
             if(nextElement.equalsIgnoreCase(usuario)){
                 if(this.getServletConfig().getInitParameter(usuario)
                         .equals(contrasenia)){
-                    request.setAttribute("userName", usuario);
+                    HttpSession session = request.getSession();
+                    session.setAttribute("cliente", new Cliente("Roberto Olvera","roberto","clave123"));
+                    //request.setAttribute("userName", usuario);
                     request.getRequestDispatcher("index.jsp").
                             forward(request, response);
                 }

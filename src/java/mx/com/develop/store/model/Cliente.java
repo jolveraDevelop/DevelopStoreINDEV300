@@ -29,6 +29,14 @@ public class Cliente {
 	public Cliente() {
 	}
 
+    public Cliente(String nombre, String usuario, String contrasenia) {
+        this.nombre = nombre;
+        this.usuario = usuario;
+        this.contrasenia = contrasenia;
+    }
+        
+        
+
 	public Cliente(String nombre, int edad, String direccion, String telefono, String usuario, String contrasenia) {
 		this.nombre = nombre;
 		this.edad = edad;

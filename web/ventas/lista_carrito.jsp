@@ -35,7 +35,7 @@
                         <tr>
                             <td></td>
                             <td>
-                                Usuario: ${usuario.nombre} <a href="logout.do">Salir</a>
+                                Usuario: ${cliente.nombre} <a href="logout.do">Salir</a>
                             </td>
                         </tr>
                     </table>
@@ -62,7 +62,7 @@
             <tbody>
                 <%
                     int i = 0;
-                    Carrito venta = (Carrito) session.getAttribute("venta");
+                    Carrito venta = (Carrito) session.getAttribute("carrito");
                     if (venta != null) {
                         Map<Producto, Integer> productosVenta = venta.getProductos();
                         Collection<Producto> productos = productosVenta.keySet();

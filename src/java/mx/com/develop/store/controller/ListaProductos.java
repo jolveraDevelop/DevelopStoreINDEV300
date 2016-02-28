@@ -1,26 +1,14 @@
 package mx.com.develop.store.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mx.com.develop.store.model.Cliente;
-import mx.com.develop.store.model.Color;
-import mx.com.develop.store.model.Producto;
-import mx.com.develop.store.model.Talla;
-import mx.com.develop.store.model.TipoProducto;
 public class ListaProductos extends HttpServlet {  
 
 //    @Override

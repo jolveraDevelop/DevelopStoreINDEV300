@@ -65,9 +65,9 @@
                     <td><%= prodActual.getColor().getTitulo()%></td>
                     <td><%= prodActual.getTalla().getTitulo()%></td>
                     <td>$<%= prodActual.getPrecio()%></td>
-                    <td></td>
+                    <td><%= prodActual.getDisponibles()%></td>
                     <td><a href="./ventas/detalles_producto.view?id=<%= prodActual.getId() %>">
-                            <img src="/imagen/carrito.png" width="40" height="40"
+                            <img src="./imagenes/carrito.png" width="40" height="40"
                              alt="carrito" /></a>
                     </td>
                 </tr>
