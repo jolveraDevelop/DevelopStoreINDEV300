@@ -42,7 +42,7 @@
                 </td> 
             </tr> 
         </table>
-        <b>Usted está aquí:</b> <a href="index.html">Inicio</a>/Listado de Productos        
+        <b>Usted está aquí:</b> <a href="index.jsp">Inicio</a>/Listado de Productos        
         <h2>Lista de Productos:</h2>
         <table border="1" width="800" id="table">
             <thead>
