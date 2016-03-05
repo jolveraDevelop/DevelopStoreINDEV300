@@ -35,7 +35,7 @@
                         <tr>
                             <td></td>
                             <td>
-                                Usuario: ${cliente.nombre} <a href="logout.do">Salir</a>
+                                Usuario: ${cliente.nombre} <a href="../logout.do">Salir</a>
                             </td>
                         </tr>
                     </table>

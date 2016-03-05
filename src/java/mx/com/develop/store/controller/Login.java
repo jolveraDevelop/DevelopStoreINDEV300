@@ -35,6 +35,7 @@ public class Login extends HttpServlet {
                     String encodeUrl = 
                             response.encodeRedirectURL("lista_productos.view");
                     response.sendRedirect(encodeUrl);
+                    return;
                 }
             }else{
                 request.getRequestDispatcher("login_error.jsp").forward(request, response);

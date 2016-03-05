@@ -52,6 +52,7 @@ public class AgregarCarrito extends HttpServlet {
                         carrito.addProducto(producto, cantidadSolicitada);
                         // descontar de disponibles la cantidad solicitada del producto 
                         // que esta en la lista de servlet context
+                        producto.setDisponibles(producto.getDisponibles()-cantidadSolicitada);
                     }
                 }
                 session.setAttribute("carrito", carrito);
