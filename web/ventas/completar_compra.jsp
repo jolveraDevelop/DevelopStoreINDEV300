@@ -4,11 +4,12 @@
     Author     : Humberto
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.Collection"%>
 <%@page import="java.util.Map"%>
 <%@page import="mx.com.develop.store.model.Producto"%>
 <%@page import="mx.com.develop.store.model.Producto"%>
-<%@page import="mx.com.develop.store.model.Venta"%>
+<%@page import="mx.com.develop.store.model.Carrito"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -43,6 +44,7 @@
         </table>
         <b>Usted está aquí:</b> <a href="../index.html">Inicio</a>/Detalles de la compra.
         <h2>La compra se realizó con éxito, aquí los detalles:</h2>
+        <br/>
         <h2>Lista de Productos:</h2>
         <table border="1" width="800" id="table">
             <thead>
@@ -59,7 +61,7 @@
             <tbody>
                 <%
                     int i = 0;
-                    Venta venta = (Venta) request.getAttribute("venta");
+                    Carrito venta = (Carrito) request.getAttribute("venta");
                     if (venta != null) {
                         Map<Producto, Integer> productosVenta = venta.getProductos();
                         Collection<Producto> productos = productosVenta.keySet();
@@ -79,6 +81,34 @@
                         }
                     }
                 %>
+                <c:catch var="ex">
+                <c:set var="total" value="${factura.total}" scope="page" />
+                <c:set var="subtotal" value="${total div 1.16}" scope="page" />
+                <c:set var="iva" value="${total - iva}" scope="page" />
+                <c:set target="${factura}" property="subtotal" value="${subtotal}"/>
+                <c:set target="${factura}" property="iva" value="${iva}"/> 
+                <c:remove var="iva" scope="page" />
+                <c:set target="${factura}" property="otra" value="${iva}"/>
+                </c:catch>
+                error al asignar propiedades a factura: ${ex}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><b>Iva</b></td>
+                    <td>$ ${iva}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><b>SubTotal:</b></td>
+                    <td>$ ${subtotal}</td>
+                </tr>
                 <tr>
                     <td></td>
                     <td></td>
@@ -86,10 +116,17 @@
                     <td></td>
                     <td></td>
                     <td><b>Total:</b></td>
-                    <td></td>
+                    <td>$ ${total}</td>
                 </tr>
             </tbody>
         </table>
+        <p>Detalle de la factura:</p>
+        Cliente: ${cliente.nombre} <br>
+        Iva: ${factura.iva} <br>
+        SubTotal: ${factura.subtotal} <br>
+        Total: ${factura.total} <br>
+        
+        
         <p>Los siguientes cupones tienen descuentos en tus próximas compras:</p>
         <p> <a href="../lista_productos.view">Seguir comprando</a></p>
     </body>

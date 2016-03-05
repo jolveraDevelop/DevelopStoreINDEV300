@@ -5,8 +5,6 @@
 package mx.com.develop.store.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.ServletContext;
@@ -18,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import mx.com.develop.store.model.Producto;
 import mx.com.develop.store.model.Carrito;
+import mx.com.develop.store.model.Cliente;
+import mx.com.develop.store.model.Factura;
 
 /**
  *
@@ -42,20 +42,23 @@ public class CompletarCompra extends HttpServlet {
         ServletContext context = getServletContext();
 
         if (session != null) {
-            Carrito venta = (Carrito) session.getAttribute("venta");
+            Carrito venta = (Carrito) session.getAttribute("carrito");
             if (venta != null) {
                 Map<Producto, Integer> productos = venta.getProductos();
                 double total = 0.0;
                 Set<Producto> set = productos.keySet();
                 for (Producto producto : set) {
-                    total += producto.getPrecio();
+                    total += producto.getPrecio() * productos.get(producto);
                 }
                 //Cupones de descuento.
+                
                 //Vaciar el crrito de compras.                
-                session.removeAttribute("venta");
+                session.removeAttribute("carrito");
                 //Compartir los productos del carrito, los cupones y el total de la compra.
                 request.setAttribute("venta", venta);
-                request.setAttribute("total", total);
+                request.setAttribute("factura", new Factura(1,(Cliente)session.getAttribute("cliente"),
+                                                                                        null,0.0,0.0,total));
+                
                 request.getRequestDispatcher("completar_compra.jsp").forward(request, response);
             } else {
                 venta = new Carrito();

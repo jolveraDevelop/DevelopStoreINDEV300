@@ -3,6 +3,7 @@
     Created on : 7/02/2016, 11:09:33 AM
     Author     : jr_ro
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="mx.com.develop.store.model.Producto"%>
 <%@page import="java.util.List"%>
 <%@page isELIgnored="false" %>
@@ -31,7 +32,7 @@
                         <tr>
 
                             <td>Usuario: </td>
-                            <td>${user.nombre}</td>
+                            <td><c:out value="${cliente.nombre}" escapeXml="false"><b>Invitado</b></c:out></td>
                             <%--<td><%= request.getAttribute("userName") %></td>--%>
                         </tr>
                         <tr>

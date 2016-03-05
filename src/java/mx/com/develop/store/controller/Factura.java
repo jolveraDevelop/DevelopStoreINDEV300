@@ -19,6 +19,17 @@ public class Factura {
     private double iva;
     private double total;
 
+    public Factura(int folio, Cliente cliente, List<Producto> productos, double subtotal, double iva, double total) {
+        this.folio = folio;
+        this.cliente = cliente;
+        this.productos = productos;
+        this.subtotal = subtotal;
+        this.iva = iva;
+        this.total = total;
+    }
+    
+    
+
     public double getTotal() {
         return total;
     }
