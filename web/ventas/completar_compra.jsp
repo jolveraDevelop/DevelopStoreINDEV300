@@ -84,11 +84,11 @@
                 <c:catch var="ex">
                 <c:set var="total" value="${factura.total}" scope="page" />
                 <c:set var="subtotal" value="${total div 1.16}" scope="page" />
-                <c:set var="iva" value="${total - iva}" scope="page" />
+                <c:set var="iva" value="${total - subtotal}" scope="page" />
                 <c:set target="${factura}" property="subtotal" value="${subtotal}"/>
                 <c:set target="${factura}" property="iva" value="${iva}"/> 
-                <c:remove var="iva" scope="page" />
                 <c:set target="${factura}" property="otra" value="${iva}"/>
+                <c:remove var="iva" scope="page" />
                 </c:catch>
                 error al asignar propiedades a factura: ${ex}
                 <tr>
@@ -128,6 +128,9 @@
         
         
         <p>Los siguientes cupones tienen descuentos en tus próximas compras:</p>
+        ${cupones[0]} <br/>
+        ${cupones["1"]} <br/>
+        ${cupones['2']} <br/>
         <p> <a href="../lista_productos.view">Seguir comprando</a></p>
     </body>
 </html>
