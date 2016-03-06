@@ -37,6 +37,7 @@ public class ListaProductos extends HttpServlet {
         System.out.println("service(HttpServletRequest req, HttpServletResponse res) ");
         Enumeration<String> parameterNames = req.getParameterNames();
         System.out.println("Lista de nombres de parametros:");
+        
         while (parameterNames.hasMoreElements()) {
             String nextElement = parameterNames.nextElement();
             System.out.println("nextElement: "+nextElement);

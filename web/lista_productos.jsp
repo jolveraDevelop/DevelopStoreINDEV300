@@ -8,6 +8,7 @@
 <%@page import="java.util.List"%>
 <%@page isELIgnored="false" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page errorPage="exception.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,9 +21,16 @@
         </style>
     </head>
     <body>
+        <%@include file="header.jsp" %>
+         aqui termina priemer header
         <c:import url="header.jsp" >
             <c:param name="titulo" value="Lista de Productos" />
-        </c:import>        
+        </c:import>
+        <%
+        if(1==1){
+            throw new RuntimeException("Ocurrio un error en lista_productos.jsp");
+        }
+        %>
         <b>Usted está aquí:</b> <a href="index.jsp">Inicio</a>/Listado de Productos        
         <h2>Lista de Productos:</h2>
         <table border="1" width="800" id="table">
@@ -58,7 +66,7 @@
                 </c:forEach>
                 
                 
-                <!-- <%
+                <!-- <%--<%
                     List<Producto> prods = (List<Producto>)request.getAttribute("productos");
                     for(Producto prodActual : prods){
                 %>
@@ -79,6 +87,7 @@
                 <%
                     }
                 %>
+                --%>
                 --%>
             </tbody>
         </table>

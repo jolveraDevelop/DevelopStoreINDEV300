@@ -6,6 +6,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,10 +23,12 @@
             </tr> 
             <tr align='right'> 
                 <td>
-
+                    <%= exception.getMessage() %>
+                   
                 </td> 
+               
             </tr> 
         </table>
-        <img src="<c:url value="/error/error_interno.png"/>" width="579" height="309" alt="error_interno"/>
+        <img src="<c:url value="/imagenes/error_interno.png"/>" width="579" height="309" alt="error_interno"/>
     </body>
 </html>
