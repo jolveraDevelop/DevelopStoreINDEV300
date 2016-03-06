@@ -30,13 +30,11 @@
                 <td>
                     <table>
                         <tr>
-
+                            <c:if test="${sessionScope.cliente ne null}"><td><a href="ventas/lista_carrito.jsp">Ver carrtio</a></td></c:if>
                             <td>Usuario: </td>
                             <td><c:out value="${cliente.nombre}" escapeXml="false"><b>Invitado</b></c:out></td>
                             <%--<td><%= request.getAttribute("userName") %></td>--%>
-                        </tr>
-                        <tr>
-                            <a href="logout.do">Cerrar sesion</a>
+                            <td><a href="logout.do">Cerrar sesion</a></td>
                         </tr>
                     </table>
                 </td> 
@@ -58,7 +56,26 @@
                 </tr>
             </thead>
             <tbody>
-                <%
+                <c:forEach items="${requestScope.productos}" begin="0"
+                           step="1" var="producto" varStatus="index">
+                    <tr>
+                        <td>${index.count}</td>
+                        <td>${producto.descripcion}</td>
+                        <td>${producto.tipo.titulo}</td>
+                        <td>${producto.color.titulo}</td>
+                        <td>${producto.talla.titulo}</td>
+                        <td>${producto.precio}</td>
+                        <td>${producto.disponibles}</td>
+                        <td><a href="./ventas/detalles_producto.view?id=${producto.id}" >
+                                <img src="./imagenes/carrito.png" width="40" height="40"
+                                     alt="carrito" />
+                            </a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                
+                
+                <!-- <%
                     List<Producto> prods = (List<Producto>)request.getAttribute("productos");
                     for(Producto prodActual : prods){
                 %>
@@ -79,7 +96,7 @@
                 <%
                     }
                 %>
-                
+                --%>
             </tbody>
         </table>
     </body>

@@ -4,6 +4,7 @@
     Author     : Humberto
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.Enumeration"%>
 <%@page import="java.util.Collection"%>
 <%@page import="java.util.Map"%>
@@ -60,12 +61,32 @@
                 </tr>
             </thead>
             <tbody>
+                
+                <c:forEach items="${sessionScope.carrito.productos}" 
+                           var="item" varStatus="index">
+                    <c:set var="producto" value="${item.key}" />
+                    <tr>
+                        <td>${index.count}</td>
+                        <td>${producto.descripcion}</td>
+                        <td>${producto.tipo.titulo}</td>
+                        <td>${producto.color.titulo}</td>
+                        <td>${producto.talla.titulo}</td>
+                        <td>${producto.precio}</td>
+                        <td>${item.value}</td>
+                        <td>     
+                            <a href="">Modificar</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                
+                <!--
                 <%
                     int i = 0;
                     Carrito venta = (Carrito) session.getAttribute("carrito");
                     if (venta != null) {
                         Map<Producto, Integer> productosVenta = venta.getProductos();
                         Collection<Producto> productos = productosVenta.keySet();
+                        if(productos!=null)
                         for (Producto producto : productos) {
                             i++;
                 %>
@@ -85,6 +106,7 @@
                         }
                     }
                 %>
+                -->
             </tbody>
         </table>
         <p> <a href="../lista_productos.view">Seguir comprando</a></p>
