@@ -128,9 +128,9 @@
         
         
         <p>Los siguientes cupones tienen descuentos en tus próximas compras:</p>
-        ${cupones[0]} <br/>
-        ${cupones["1"]} <br/>
-        ${cupones['2']} <br/>
+        <c:forTokens delims="," items="${cupones}" var="cupon">
+            ${cupon} <br/>
+        </c:forTokens>
         <p> <a href="../lista_productos.view">Seguir comprando</a></p>
     </body>
 </html>

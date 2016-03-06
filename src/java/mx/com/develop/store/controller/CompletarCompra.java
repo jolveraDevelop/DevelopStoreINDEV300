@@ -51,7 +51,8 @@ public class CompletarCompra extends HttpServlet {
                     total += producto.getPrecio() * productos.get(producto);
                 }
                 //Cupones de descuento.
-                String cupones[] = {"sdfgtr","yudfsa","wetjgh"};
+                //String cupones[] = {"sdfgtr","yudfsa","wetjgh"};
+                String cupones ="sdfgtr,yudfsa,wetjgh";
                 request.setAttribute("cupones",cupones);
                 //Vaciar el crrito de compras.                
                 session.removeAttribute("carrito");

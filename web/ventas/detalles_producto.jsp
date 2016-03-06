@@ -4,6 +4,7 @@
     Author     : Humberto
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="mx.com.develop.store.model.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -41,8 +42,14 @@
     <b>Talla:</b> ${ producto.talla}</br>
     <b>Descripcion:</b> ${producto.descripcion}</br>
     <b>Tipo:</b> ${producto.tipo.titulo}</br>
+    
+    <c:set var="urlAgregarProducto" scope="page">
+        <c:url value="agregar_carrito.do">  
+            <c:param name="id" value="${producto.id}"/>
+        </c:url>
+    </c:set>
 
-    <form action="agregar_carrito.do?id=${producto.id}" method="POST">
+    <form action="${urlAgregarProducto}" method="POST">
         <table border="0">        
             <tbody>
                 <tr>
