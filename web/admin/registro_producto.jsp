@@ -27,7 +27,7 @@
                 <td>
                     <table>
                         <tr>
-                            <td><a href="../login.html">Login</a></td>
+                            <td><a href="../login.jsp">Login</a></td>
                             <td><a href="../registro_cliente.html">Regístrate</a></td>
                         </tr>
                     </table>

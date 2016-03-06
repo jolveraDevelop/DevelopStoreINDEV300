@@ -28,6 +28,6 @@
             </tr> 
         </table>
         <font color="red"><p>Usuario y/o contraseña incorrecta<p></font>
-            <a href="login.html">Regresar</a>
+            <a href="login.jsp">Regresar</a>
     </body>
 </html>

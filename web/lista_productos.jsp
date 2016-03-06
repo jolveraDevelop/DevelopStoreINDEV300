@@ -20,26 +20,9 @@
         </style>
     </head>
     <body>
-        <table border='0' cellpadding='5' cellspacing='0' width='800'> 
-            <tr bgcolor='#3882C7' align='center' valign='center' height='20'> 
-                <td>
-                    <h3><font color="white">Develop Store: Listado de Productos</h3>
-                </td> 
-            </tr> 
-            <tr align='right'> 
-                <td>
-                    <table>
-                        <tr>
-                            <c:if test="${sessionScope.cliente ne null}"><td><a href="ventas/lista_carrito.jsp">Ver carrtio</a></td></c:if>
-                            <td>Usuario: </td>
-                            <td><c:out value="${cliente.nombre}" escapeXml="false"><b>Invitado</b></c:out></td>
-                            <%--<td><%= request.getAttribute("userName") %></td>--%>
-                            <td><a href="logout.do">Cerrar sesion</a></td>
-                        </tr>
-                    </table>
-                </td> 
-            </tr> 
-        </table>
+        <c:import url="header.jsp" >
+            <c:param name="titulo" value="Lista de Productos" />
+        </c:import>        
         <b>Usted está aquí:</b> <a href="index.jsp">Inicio</a>/Listado de Productos        
         <h2>Lista de Productos:</h2>
         <table border="1" width="800" id="table">
