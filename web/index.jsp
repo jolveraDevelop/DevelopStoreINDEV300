@@ -3,7 +3,7 @@
     Created on : 21/02/2016, 11:16:47 AM
     Author     : jr_ro
 --%>
-
+<%@taglib prefix="ds" uri="/WEB-INF/tlds/store_tags.tld" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,7 +31,9 @@
             </tr> 
         </table>
         <h2>Bienvenido a DEVELOP Store ${sessionScope.cliente.nombre}</h2>
-        
+        <ds:cupones delimits="," items="${cupones}" var="cupon" >
+            ${cupon}<br/>
+        </ds:cupones>
         <!--
         <h2>Bienvenido a DEVELOP Store <%= request.getSession()
                                             .getAttribute("cliente") %></h2>

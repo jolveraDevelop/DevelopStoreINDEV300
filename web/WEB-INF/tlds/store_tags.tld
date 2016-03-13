@@ -35,4 +35,39 @@
       <type>List&lt;Producto&gt;</type>
     </attribute>
   </tag>
+  <tag>
+    <name>mostrarProductos</name>
+    <tag-class>mx.com.develop.store.tags.MostrarProductosTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <name>columnas</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+  </tag>
+  <tag>
+    <name>cupones</name>
+    <tag-class>mx.com.develop.store.tags.CuponesTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <name>items</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <name>delimits</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <name>var</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <name>tokens</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String[]</type>
+    </attribute>
+  </tag>
 </taglib>

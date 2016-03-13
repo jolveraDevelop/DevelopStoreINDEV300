@@ -161,9 +161,14 @@
         
         
         <p>Los siguientes cupones tienen descuentos en tus próximas compras:</p>
+        
+        <ds:cupones delimits="," items="${cupones}" var="cupon" >
+            ${cupon}<br/>
+        </ds:cupones>
+        <%--
         <c:forTokens delims="," items="${cupones}" var="cupon">
             ${cupon} <br/>
-        </c:forTokens>
+        </c:forTokens>--%>
         <p> <a href="../lista_productos.view">Seguir comprando</a></p>
     </body>
 </html>

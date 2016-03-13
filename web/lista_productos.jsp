@@ -9,7 +9,7 @@
 <%@page import="java.util.List"%>
 <%@page isELIgnored="false" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page errorPage="exception.jsp" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -48,8 +48,13 @@
                 </tr>
             </thead>
             <tbody>
-                <ds:mostrarProductos />
-                <ds:ForEachTag items="${requestScope.productos}"
+                <ds:mostrarProductos columnas="1,2,3,4,5,6,7,8"/>
+                
+            </tbody>
+        </table>
+    </body>
+</html>
+                <%--<ds:ForEachTag items="${requestScope.productos}"
                                var="prod"
                                varStatus="count">
                     <tr>
@@ -60,14 +65,14 @@
                         <td>${prod.talla.titulo}</td>
                         <td>${prod.precio}</td>
                         <td>${prod.disponibles}</td>
-                        <td><a href="./ventas/detalles_producto.view?id=${producto.id}" >
+                        <td><a href="./ventas/detalles_producto.view?id=${prod.id}" >
                                 <img src="./imagenes/carrito.png" width="40" height="40"
                                      alt="carrito" />
                             </a>
                         </td>
                     </tr>
                 </ds:ForEachTag>
-                
+                --%>
                 <%--
                 <c:forEach items="${requestScope.productos}" begin="0"
                            step="1" var="producto" varStatus="index">
@@ -111,6 +116,7 @@
                 %>
                 --%>
                 --%>
+                -
             </tbody>
         </table>
     </body>
