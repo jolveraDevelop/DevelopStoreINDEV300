@@ -4,6 +4,7 @@
     Author     : jr_ro
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ds" uri="/store.develop.com.mx" %>
 <%@page import="mx.com.develop.store.model.Producto"%>
 <%@page import="java.util.List"%>
 <%@page isELIgnored="false" %>
@@ -21,15 +22,15 @@
         </style>
     </head>
     <body>
-        <%@include file="header.jsp" %>
-         aqui termina priemer header
+        <%--<%@include file="header.jsp" %>
+         aqui termina priemer header--%>
         <c:import url="header.jsp" >
             <c:param name="titulo" value="Lista de Productos" />
         </c:import>
         <%
-        if(1==1){
-            throw new RuntimeException("Ocurrio un error en lista_productos.jsp");
-        }
+        //if(1==1){
+          //  throw new RuntimeException("Ocurrio un error en lista_productos.jsp");
+        //}
         %>
         <b>Usted está aquí:</b> <a href="index.jsp">Inicio</a>/Listado de Productos        
         <h2>Lista de Productos:</h2>
@@ -47,6 +48,27 @@
                 </tr>
             </thead>
             <tbody>
+                <ds:mostrarProductos />
+                <ds:ForEachTag items="${requestScope.productos}"
+                               var="prod"
+                               varStatus="count">
+                    <tr>
+                        <td>${count}</td>
+                        <td>${prod.descripcion}</td>
+                        <td>${prod.tipo.titulo}</td>
+                        <td>${prod.color.titulo}</td>
+                        <td>${prod.talla.titulo}</td>
+                        <td>${prod.precio}</td>
+                        <td>${prod.disponibles}</td>
+                        <td><a href="./ventas/detalles_producto.view?id=${producto.id}" >
+                                <img src="./imagenes/carrito.png" width="40" height="40"
+                                     alt="carrito" />
+                            </a>
+                        </td>
+                    </tr>
+                </ds:ForEachTag>
+                
+                <%--
                 <c:forEach items="${requestScope.productos}" begin="0"
                            step="1" var="producto" varStatus="index">
                     <tr>
@@ -64,7 +86,7 @@
                         </td>
                     </tr>
                 </c:forEach>
-                
+                --%>
                 
                 <!-- <%--<%
                     List<Producto> prods = (List<Producto>)request.getAttribute("productos");

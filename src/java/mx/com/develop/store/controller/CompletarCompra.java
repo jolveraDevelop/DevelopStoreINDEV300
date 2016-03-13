@@ -58,8 +58,10 @@ public class CompletarCompra extends HttpServlet {
                 session.removeAttribute("carrito");
                 //Compartir los productos del carrito, los cupones y el total de la compra.
                 request.setAttribute("venta", venta);
+                request.setAttribute("total", total);
+       
                 request.setAttribute("factura", new Factura(1,(Cliente)session.getAttribute("cliente"),
-                                                                                        null,0.0,0.0,total));
+                                                                                       null,0.0,0.0,0.0));
                 
                 request.getRequestDispatcher("completar_compra.jsp").forward(request, response);
             } else {

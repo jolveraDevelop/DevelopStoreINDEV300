@@ -19,6 +19,9 @@ public class Factura {
     private double iva;
     private double total;
 
+    public Factura() {
+    }
+    
     public Factura(int folio, Cliente cliente, List<Producto> productos, double subtotal, double iva, double total) {
         this.folio = folio;
         this.cliente = cliente;

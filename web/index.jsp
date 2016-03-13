@@ -46,5 +46,6 @@
             <li><a href="lista_productos.view">Ver listado de Productos.</a>
             </li>
         </ul>
+        <jsp:include page="fecha.jsp" flush="true" />
     </body>
 </html>

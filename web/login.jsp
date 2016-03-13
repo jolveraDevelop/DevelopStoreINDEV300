@@ -7,7 +7,8 @@
     </head>
     <body>
         <c:if test="${sessionScope.cliente ne null}">
-             <c:redirect url="lista_productos.view"/>
+             <%--<c:redirect url="lista_productos.view"/>--%>
+             <jsp:forward page="lista_productos.view" />
         </c:if>
         <table border='0' cellpadding='5' cellspacing='0' width='800'> 
             <tr bgcolor='#3882C7' align='center' valign='center' height='20'> 

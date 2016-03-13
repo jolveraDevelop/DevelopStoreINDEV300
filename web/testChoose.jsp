@@ -14,6 +14,24 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:useBean id="factura" scope="request" class="mx.com.develop.store.model.Factura" > 
+                    <jsp:setProperty name="factura" 
+                                     property="iva" 
+                                     value="1"/>
+                    <jsp:setProperty name="factura" 
+                                     property="subtotal" 
+                                     value="1"/>
+                    <jsp:setProperty name="factura" 
+                                     property="total" 
+                                     value="1"/>
+                </jsp:useBean>
+        <jsp:setProperty name="factura" 
+                         property="*"
+                         />
+        Iva factura = <jsp:getProperty name="factura" property="iva" />
+        Iva factura = ${factura.subtotal}
+        Iva factura = ${factura.total}
+        
         <c:set var="horaActual" value="<%= new Date().getHours() %>" />
         <c:choose>
             <c:when test="${horaActual lt 12}">

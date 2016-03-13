@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ds" uri="/store.develop.com.mx" %>
 <%@page import="java.util.Collection"%>
 <%@page import="java.util.Map"%>
 <%@page import="mx.com.develop.store.model.Producto"%>
@@ -81,7 +82,7 @@
                         }
                     }
                 %>
-                <c:catch var="ex">
+                <%--<c:catch var="ex">
                 <c:set var="total" value="${factura.total}" scope="page" />
                 <c:set var="subtotal" value="${total div 1.16}" scope="page" />
                 <c:set var="iva" value="${total - subtotal}" scope="page" />
@@ -90,7 +91,39 @@
                 <c:set target="${factura}" property="otra" value="${iva}"/>
                 <c:remove var="iva" scope="page" />
                 </c:catch>
-                error al asignar propiedades a factura: ${ex}
+                error al asignar propiedades a factura: ${ex}--%>
+                
+                <%--misma funcionalidad con jsp actions --%>
+                <c:set var="subtotal" value="${total div 1.16}" scope="page" />
+                <c:set var="iva" value="${total - subtotal}" scope="page" />
+                <jsp:useBean id="factura" scope="request" class="mx.com.develop.store.model.Factura" > 
+                    <jsp:setProperty name="factura" 
+                                     property="iva" 
+                                     value="1"/>
+                    <jsp:setProperty name="factura" 
+                                     property="subtotal" 
+                                     value="1"/>
+                    <jsp:setProperty name="factura" 
+                                     property="total" 
+                                     value="1"/>
+                </jsp:useBean>
+                <%--<jsp:setProperty name="factura" 
+                                 property="iva" 
+                                 value="${iva}"/>
+                <jsp:setProperty name="factura" 
+                                 property="subtotal" 
+                                 value="${subtotal}"/>--%>
+                <%--<jsp:setProperty name="factura" 
+                                 property="*"
+                                 />--%>
+                <jsp:setProperty name="factura"
+                                 property="iva"
+                                 param="iva" />                 
+                <jsp:setProperty name="factura" 
+                                 property="total" 
+                                 value="${total}"/>
+                
+               
                 <tr>
                     <td></td>
                     <td></td>
@@ -98,7 +131,7 @@
                     <td></td>
                     <td></td>
                     <td><b>Iva</b></td>
-                    <td>$ ${iva}</td>
+                    <td><ds:formatearMoneda valor="${iva}" /></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -107,7 +140,7 @@
                     <td></td>
                     <td></td>
                     <td><b>SubTotal:</b></td>
-                    <td>$ ${subtotal}</td>
+                    <td><ds:formatearMoneda valor="${subtotal}" /></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -116,7 +149,7 @@
                     <td></td>
                     <td></td>
                     <td><b>Total:</b></td>
-                    <td>$ ${total}</td>
+                    <td><ds:formatearMoneda valor="${total}" /></td>
                 </tr>
             </tbody>
         </table>
