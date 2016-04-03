@@ -4,6 +4,14 @@
         <param-name>version</param-name>
         <param-value>1.0</param-value>
     </context-param>
+    <filter>
+        <filter-name>MyFilter</filter-name>
+        <filter-class>mx.com.develop.store.filters.MyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>MyFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>RegistroCliente</servlet-name>
         <servlet-class>mx.com.develop.store.controller.RegistroCliente</servlet-class>
@@ -56,7 +64,6 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
-    
     <error-page>
         <error-code>404</error-code>
         <location>/error404.jsp</location>

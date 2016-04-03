@@ -1,91 +1,100 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mx.com.develop.store.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
- * 
+ *
  * @author Humberto
  */
+@Entity
 public class Producto {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, 
+            generator = "SEQUENCE_PRODUCTOS")
+    private Integer id;
+    private Color color;
+    @Column
+    private double precio;
+    private Talla talla;
+    @Column
+    private String descripcion;
+    private TipoProducto tipo;
+    @Column
+    private Integer disponibles;
 
-	private Integer id;
-	private Color color;
-	private double precio;
-	private Talla talla;
-	private String descripcion;
-	private TipoProducto tipo;
-        private Integer disponibles;
-
-	public Producto() {
-	}
-
-	public Producto(Integer id, Color color, double precio, Talla talla, String descripcion, TipoProducto tipo) {
-		this.id = id;
-		this.color = color;
-		this.precio = precio;
-		this.talla = talla;
-		this.descripcion = descripcion;
-		this.tipo = tipo;
-                this.setDisponibles(10);
-	}
-
-    public Producto(Color color, double precio, Talla talla, String descripcion, TipoProducto tipo) {
-            this.color = color;
-            this.precio = precio;
-            this.talla = talla;
-            this.descripcion = descripcion;
-            this.tipo = tipo;
+    public Producto() {
     }
 
-	public TipoProducto getTipo() {
-		return tipo;
-	}
+    public Producto(Integer id, Color color, double precio, Talla talla, String descripcion, TipoProducto tipo) {
+        this.id = id;
+        this.color = color;
+        this.precio = precio;
+        this.talla = talla;
+        this.descripcion = descripcion;
+        this.tipo = tipo;
+        this.setDisponibles(10);
+    }
 
-	public void setTipo(TipoProducto tipo) {
-		this.tipo = tipo;
-	}
+    public Producto(Color color, double precio, Talla talla, String descripcion, TipoProducto tipo) {
+        this.color = color;
+        this.precio = precio;
+        this.talla = talla;
+        this.descripcion = descripcion;
+        this.tipo = tipo;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public TipoProducto getTipo() {
+        return tipo;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setTipo(TipoProducto tipo) {
+        this.tipo = tipo;
+    }
 
-	public Color getColor() {
-		return color;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setColor(Color color) {
-		this.color = color;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public double getPrecio() {
-		return precio;
-	}
+    public Color getColor() {
+        return color;
+    }
 
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
+    public void setColor(Color color) {
+        this.color = color;
+    }
 
-	public Talla getTalla() {
-		return talla;
-	}
+    public double getPrecio() {
+        return precio;
+    }
 
-	public void setTalla(Talla talla) {
-		this.talla = talla;
-	}
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public Talla getTalla() {
+        return talla;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public void setTalla(Talla talla) {
+        this.talla = talla;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
     public Integer getDisponibles() {
         return disponibles;
@@ -94,7 +103,5 @@ public class Producto {
     public void setDisponibles(Integer disponibles) {
         this.disponibles = disponibles;
     }
-        
-        
-    
+
 }

@@ -36,7 +36,8 @@
         </table>
         <b>Usted está aquí:</b> <a href="../index.html">Inicio</a>/<a href="index.html">Admin</a>/Registro Productos
         <p>Los campos marcados con * son obligatorios:</p>
-        <form method="POST" action="registro_producto.do">
+        <form method="POST" action="registro_producto.do"
+              enctype="multipart/form-data">
             <table border="0">
                 <tr>
                     <td>* Color:</td>
@@ -89,6 +90,10 @@
                             <%}%>
                         </select>                         
                     </td>
+                </tr>
+                <tr>
+                    <td>Imagen:</td>
+                    <td><input type="file" name="imagen" /></td>
                 </tr>
                 <tr>
                     <td></td>

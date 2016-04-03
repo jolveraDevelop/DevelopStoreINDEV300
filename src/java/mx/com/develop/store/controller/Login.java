@@ -9,10 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import mx.com.develop.store.model.Cliente;
 public class Login extends HttpServlet {
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
          System.out.println("Parametro de inicio roberto: "+
                  this.getServletConfig().getInitParameter("roberto"));
           System.out.println("version: "+
