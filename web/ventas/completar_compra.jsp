@@ -94,8 +94,9 @@
                 error al asignar propiedades a factura: ${ex}--%>
                 
                 <%--misma funcionalidad con jsp actions --%>
-                <c:set var="subtotal" value="${total div 1.16}" scope="page" />
-                <c:set var="iva" value="${total - subtotal}" scope="page" />
+                
+                <c:set var="subtotal" value="${ds:subtotal(total)}" scope="page" />
+                <c:set var="iva" value="${ds:iva(total)}" scope="page" />
                 <jsp:useBean id="factura" scope="request" class="mx.com.develop.store.model.Factura" > 
                     <jsp:setProperty name="factura" 
                                      property="iva" 

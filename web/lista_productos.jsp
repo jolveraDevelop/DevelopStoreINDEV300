@@ -22,11 +22,12 @@
         </style>
     </head>
     <body>
+        <ds:header titulo="Lista de Productos" />
         <%--<%@include file="header.jsp" %>
          aqui termina priemer header--%>
-        <c:import url="header.jsp" >
+        <%--<c:import url="header.jsp" >
             <c:param name="titulo" value="Lista de Productos" />
-        </c:import>
+        </c:import>--%>
         <%
         //if(1==1){
           //  throw new RuntimeException("Ocurrio un error en lista_productos.jsp");

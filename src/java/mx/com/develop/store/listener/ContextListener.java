@@ -44,15 +44,15 @@ public class ContextListener implements ServletContextListener {
         productos.add(new Producto(4, Color.VERDE, 499.0, Talla.EXTRA_GRANDE,
                 "Pantalon de mezclilla marca f", TipoProducto.PANTALON));
         
-        List<Cliente> clientes = new ArrayList<Cliente>();
-        clientes.add(new Cliente("Roberto Olvera", 25, 
-                                "calle 1","7797890" , 
-                                            "rolvera", "rolvera"));
-        clientes.add(new Cliente("Raul Villasana", 28, 
-                                "calle 4","7867232" , 
-                                            "rvilla", "rvilla"));
-        
-        sc.setAttribute("clientes", clientes);
+//        List<Cliente> clientes = new ArrayList<Cliente>();
+//        clientes.add(new Cliente("Roberto Olvera", 25, 
+//                                "calle 1","7797890" , 
+//                                            "rolvera", "rolvera"));
+//        clientes.add(new Cliente("Raul Villasana", 28, 
+//                                "calle 4","7867232" , 
+//                                            "rvilla", "rvilla"));
+//        
+//        sc.setAttribute("clientes", clientes);
         sc.setAttribute("listaProductos",  productos);
     }
 
