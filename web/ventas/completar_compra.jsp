@@ -162,10 +162,16 @@
         
         <p>Los siguientes cupones tienen descuentos en tus próximas compras:</p>
         
-        <ds:cupones delimits="," items="${cupones}" var="cupon" >
-            ${cupon}<br/>
-        </ds:cupones>
+        <ds:cupon var1="djksj" 
+                  var2="fdskj" 
+                  var3="fdsfds" />
+        
+        
         <%--
+        <ds:forTokens delimits="," items="${cupones}" var="cupon" >
+            ${cupon}<br/>
+        </ds:forTokens>
+        
         <c:forTokens delims="," items="${cupones}" var="cupon">
             ${cupon} <br/>
         </c:forTokens>--%>

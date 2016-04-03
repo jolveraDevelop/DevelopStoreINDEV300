@@ -31,9 +31,9 @@
             </tr> 
         </table>
         <h2>Bienvenido a DEVELOP Store ${sessionScope.cliente.nombre}</h2>
-        <ds:cupones delimits="," items="${cupones}" var="cupon" >
+        <%--<ds:cupones delimits="," items="${cupones}" var="cupon" >
             ${cupon}<br/>
-        </ds:cupones>
+        </ds:cupones>--%>
         <!--
         <h2>Bienvenido a DEVELOP Store <%= request.getSession()
                                             .getAttribute("cliente") %></h2>
