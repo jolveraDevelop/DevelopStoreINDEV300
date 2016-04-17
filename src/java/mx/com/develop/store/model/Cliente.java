@@ -10,6 +10,9 @@
  */
 package mx.com.develop.store.model;
 
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+
 /**
  * 
  * @author Humberto BanueloS
@@ -17,7 +20,7 @@ package mx.com.develop.store.model;
  * @author-mail hbanuelos@7i.com.mx
  * @creation-date May 24, 2014
  */
-public class Cliente {
+public class Cliente implements HttpSessionBindingListener{
 
 	private String nombre;
 	private int edad;
@@ -25,6 +28,8 @@ public class Cliente {
 	private String telefono;
 	private String usuario;
 	private String contrasenia;
+        
+        public static Integer COUNT = 0;
 
 	public Cliente() {
 	}
@@ -93,5 +98,15 @@ public class Cliente {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+    @Override
+    public void valueBound(HttpSessionBindingEvent event) {
+        Cliente.COUNT++;
+    }
+
+    @Override
+    public void valueUnbound(HttpSessionBindingEvent event) {
+        Cliente.COUNT--;
+    }
 
 }

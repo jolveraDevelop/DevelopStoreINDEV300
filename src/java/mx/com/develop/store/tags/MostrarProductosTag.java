@@ -33,7 +33,7 @@ public class MostrarProductosTag extends SimpleTagSupport {
     public void doTag() throws JspException {
         JspWriter out = getJspContext().getOut();
         List<Producto> productos = (List<Producto>)
-                getJspContext().getAttribute("listaProductos",PageContext.APPLICATION_SCOPE);
+                getJspContext().getAttribute("productos",PageContext.REQUEST_SCOPE);
         int i = 1;
         
         String columNumber[] = this.columnas.split(",");

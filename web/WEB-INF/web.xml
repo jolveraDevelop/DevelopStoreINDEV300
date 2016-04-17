@@ -7,6 +7,7 @@
     <filter>
         <filter-name>MyFilter</filter-name>
         <filter-class>mx.com.develop.store.filters.MyFilter</filter-class>
+        <async-supported>true</async-supported>
     </filter>
     <filter-mapping>
         <filter-name>MyFilter</filter-name>

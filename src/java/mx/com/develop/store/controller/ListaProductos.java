@@ -2,14 +2,29 @@ package mx.com.develop.store.controller;
 
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.servlet.AsyncContext;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.UserTransaction;
 import mx.com.develop.store.model.Cliente;
-public class ListaProductos extends HttpServlet {  
+import mx.com.develop.store.model.Producto;
+
+public class ListaProductos extends HttpServlet { 
+    @PersistenceContext
+    private EntityManager em;
+    @Resource
+    private UserTransaction utx;
 
 //    @Override
 //    public void init(ServletConfig config) throws ServletException {
@@ -91,17 +106,34 @@ public class ListaProductos extends HttpServlet {
             throws ServletException, IOException {
         // logica de negocio
         request.setAttribute("user", new Cliente("Roberto Olvera", 24, "llll", "5555", "rolvera", "rolvera"));
-        
         // recuperar lista de productos del contexto
-        // agregarla al request 
-        
+            // agregarla al request
         // colocar como atributo la lista para que la vista la renderise
-        request.setAttribute("productos", 
-                this.getServletContext().getAttribute("listaProductos"));
+        AsyncContext startAsync = request.startAsync();
+        startAsync.setTimeout(12000);
+        startAsync.start(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // simula tarea que demora 10 segundos
+                    Thread.sleep(10000);
+                    System.out.println("termine tarea compleja");
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ListaProductos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+      
+        
+        List <Producto> productos = em.createQuery("SELECT p FROM Producto p ")
+                                            .getResultList();
+        request.setAttribute("productos", productos );
+        System.out.println("productos.size: "+productos.size());
         //enviar la peticion al jsp
         RequestDispatcher rd 
                 = request.getRequestDispatcher("lista_productos.jsp");
         rd.forward(request, response);
+        response.flushBuffer();
     }
 
 
@@ -128,5 +160,15 @@ public class ListaProductos extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+
+    public void setUtx(UserTransaction utx) {
+        this.utx = utx;
+    }
+    
+    
 
 }

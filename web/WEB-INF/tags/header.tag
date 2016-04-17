@@ -4,6 +4,7 @@
     Author     : jr_ro
 --%>
 
+<%@tag import="mx.com.develop.store.model.Cliente"%>
 <%@tag description="put the tag description here" pageEncoding="UTF-8"%>
 
 <%-- The list of normal or fragment attributes can be specified here: --%>
@@ -36,6 +37,9 @@
                             <td><c:out value="${cliente.nombre}" escapeXml="false"><b>Invitado</b></c:out></td>
                             <%--<td><%= request.getAttribute("userName") %></td>--%>
                             <td><a href="logout.do">Cerrar sesion</a></td>
+                        </tr>
+                        <tr>
+                            <td>Clientes en session: <%= Cliente.COUNT%></td>
                         </tr>
                     </table>
                 </td> 

@@ -33,6 +33,7 @@ public class ContextListener implements ServletContextListener {
         ServletRegistration.Dynamic listaProductos = 
                 sc.addServlet("ListaProductos", ListaProductos.class);
         listaProductos.addMapping("/lista_productos.view");
+        listaProductos.setAsyncSupported(true);
         
         List<Producto> productos = new ArrayList<Producto>();
         productos.add(new Producto(1, Color.ROJO, 199.0, Talla.CHICA,

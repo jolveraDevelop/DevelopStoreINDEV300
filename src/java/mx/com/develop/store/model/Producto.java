@@ -2,27 +2,33 @@ package mx.com.develop.store.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Humberto
  */
 @Entity
-public class Producto {
-    
+@Table( name = "PRODS" )
+public class Producto {   
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, 
             generator = "SEQUENCE_PRODUCTOS")
     private Integer id;
+    @Enumerated(EnumType.STRING)
     private Color color;
     @Column
     private double precio;
+    @Enumerated(EnumType.STRING)
     private Talla talla;
-    @Column
+    @Column (name = "descripcion_prod")
     private String descripcion;
+    @Enumerated(EnumType.STRING)
     private TipoProducto tipo;
     @Column
     private Integer disponibles;
