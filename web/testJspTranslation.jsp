@@ -4,6 +4,8 @@
     Author     : jr_ro
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -39,5 +41,9 @@
         <%= new Date() %>
         <p> algun codigo</p>
         <% } %>--%>
+        <% request.setAttribute("algo", new String[]{"1","2","3"}); %>
+        ${algo["2"]}
+        ${true or false}
+        <c:import >
     </body>
 </html>

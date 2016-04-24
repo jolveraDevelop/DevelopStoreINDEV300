@@ -32,6 +32,10 @@
             <param-name>maria</param-name>
             <param-value>pass123</param-value>
         </init-param>
+        <security-role-ref>
+            <role-name>admins</role-name>
+            <role-link>Administradores</role-link>
+        </security-role-ref>
     </servlet>
     <servlet>
         <servlet-name>RegistroProducto</servlet-name>
@@ -69,4 +73,61 @@
         <error-code>404</error-code>
         <location>/error404.jsp</location>
     </error-page>
+    
+    <security-constraint>
+        <display-name>AdministradoresConstraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>AdministradoresPages</web-resource-name>
+            <description>Paginas protegidas para los Administradores</description>
+            <url-pattern>/admin/*</url-pattern>
+            <url-pattern>/lista_productos.view</url-pattern>
+            <http-method>POST</http-method>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description>rol de Administradores</description>
+            <role-name>Administradores</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>CompradoresConstraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>CompradoresPages</web-resource-name>
+            <description>Paginas protegidas para los Administradores</description>
+            <url-pattern>/lista_productos.view</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description>damos persimo a los Compradores</description>
+            <role-name>Compradores</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <description/>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login_form.html</form-login-page>
+            <form-error-page>/login_error.html</form-error-page>
+        </form-login-config>
+        <web-resource-collection>
+            <web-resource-name>CompradoresPages</web-resource-name>
+            <description>Paginas protegidas para los Administradores</description>
+            <url-pattern>/lista_productos.view</url-pattern>
+        </web-resource-collection>
+    </login-config>
+    <security-role>
+        <description>rol de Administradores</description>
+        <role-name>Administradores</role-name>
+    </security-role>
+    <security-role>
+        <description>rol de Compradores</description>
+        <role-name>Compradores</role-name>
+    </security-role>
+    <security-role-ref>
+        <description>rol de Administradores</description>
+        <role-name>admin</role-name>
+        <role-link/>
+    </security-role-ref>
 </web-app>

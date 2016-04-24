@@ -12,14 +12,18 @@ import javax.servlet.AsyncContext;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.UserTransaction;
+import mx.com.develop.store.listener.StoreAsyncListener;
 import mx.com.develop.store.model.Cliente;
 import mx.com.develop.store.model.Producto;
 
+//@ServletSecurity(@HttpConstraint (rolesAllowed = {"Administradores"}))
 public class ListaProductos extends HttpServlet { 
     @PersistenceContext
     private EntityManager em;
@@ -109,22 +113,28 @@ public class ListaProductos extends HttpServlet {
         // recuperar lista de productos del contexto
             // agregarla al request
         // colocar como atributo la lista para que la vista la renderise
-        AsyncContext startAsync = request.startAsync();
-        startAsync.setTimeout(12000);
-        startAsync.start(new Runnable() {
+        final AsyncContext contextAsync = request.startAsync();
+        contextAsync.setTimeout(22000);
+        contextAsync.addListener(new StoreAsyncListener());
+        contextAsync.start(new Runnable() {
             @Override
             public void run() {
                 try {
                     // simula tarea que demora 10 segundos
                     Thread.sleep(10000);
+//                    if(1==1){
+//                        throw new RuntimeException("Error en el listener");
+//                    }
                     System.out.println("termine tarea compleja");
+                    ((HttpServletRequest) contextAsync.getRequest()).getSession()
+                       .setAttribute("proceso", "El proceso terminó satisfactoriamente.");
+                    contextAsync.complete();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ListaProductos.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
       
-        
         List <Producto> productos = em.createQuery("SELECT p FROM Producto p ")
                                             .getResultList();
         request.setAttribute("productos", productos );

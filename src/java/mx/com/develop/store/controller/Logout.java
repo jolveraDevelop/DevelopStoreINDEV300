@@ -35,6 +35,7 @@ public class Logout extends HttpServlet {
         if(session!=null){
             System.out.println("session invalidate");
             session.invalidate();
+            request.logout();
             request.getRequestDispatcher("index.jsp")
                     .forward(request, response);
         }

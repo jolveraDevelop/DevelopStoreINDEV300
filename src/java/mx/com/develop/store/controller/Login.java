@@ -14,34 +14,53 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-         System.out.println("Parametro de inicio roberto: "+
-                 this.getServletConfig().getInitParameter("roberto"));
-          System.out.println("version: "+
-                this.getServletContext().getInitParameter("version"));
-        //validar usurio y contraseña
-        String usuario = request.getParameter("usuario");
-        String contrasenia = request.getParameter("contrasenia");
-        Enumeration<String> usuariosValidos 
-                = this.getServletConfig().getInitParameterNames();
-       
-        while (usuariosValidos.hasMoreElements()) {
-            String nextElement = usuariosValidos.nextElement();
-            if(nextElement.equalsIgnoreCase(usuario)){
-                if(this.getServletConfig().getInitParameter(usuario)
-                        .equals(contrasenia)){
-                    HttpSession session = request.getSession();
-                    session.setAttribute("cliente", new Cliente("Roberto Olvera","roberto","clave123"));
-                    //request.setAttribute("userName", usuario);
-                              
-                    String encodeUrl = 
-                            response.encodeRedirectURL("lista_productos.view");
+            String usuario = request.getParameter("usuario");
+            String contrasenia = request.getParameter("contrasenia");
+            
+            request.login(usuario, contrasenia);
+            
+            System.out.println("request.getUserPrincipal(): "+request.getUserPrincipal());
+            
+            if(request.isUserInRole("admins")){
+                String encodeUrl = 
+                            response.encodeRedirectURL("./admin/registro_producto.jsp");
                     response.sendRedirect(encodeUrl);
-                    return;
-                }
-            }else{
-                request.getRequestDispatcher("login_error.jsp").forward(request, response);
+            }else if(request.isUserInRole("Compradores")){
+                String encodeUrl = 
+                            response.encodeRedirectURL("./lista_productos.view");
+                    response.sendRedirect(encodeUrl);
+                
             }
-        }
+            
+        
+//         System.out.println("Parametro de inicio roberto: "+
+//                 this.getServletConfig().getInitParameter("roberto"));
+//          System.out.println("version: "+
+//                this.getServletContext().getInitParameter("version"));
+//        //validar usurio y contraseña
+//        String usuario = request.getParameter("usuario");
+//        String contrasenia = request.getParameter("contrasenia");
+//        Enumeration<String> usuariosValidos 
+//                = this.getServletConfig().getInitParameterNames();
+//       
+//        while (usuariosValidos.hasMoreElements()) {
+//            String nextElement = usuariosValidos.nextElement();
+//            if(nextElement.equalsIgnoreCase(usuario)){
+//                if(this.getServletConfig().getInitParameter(usuario)
+//                        .equals(contrasenia)){
+//                    HttpSession session = request.getSession();
+//                    session.setAttribute("cliente", new Cliente("Roberto Olvera","roberto","clave123"));
+//                    //request.setAttribute("userName", usuario);
+//                              
+//                    String encodeUrl = 
+//                            response.encodeRedirectURL("lista_productos.view");
+//                    response.sendRedirect(encodeUrl);
+//                    return;
+//                }
+//            }else{
+//                request.getRequestDispatcher("login_error.jsp").forward(request, response);
+//            }
+//        }
 //      redirigir a error login
         
     }
